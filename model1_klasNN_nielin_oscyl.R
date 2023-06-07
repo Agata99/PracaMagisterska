@@ -5,17 +5,17 @@
 ####--- opiekun: dr Magdalena Chmara                                                                   #
 ####--- luty 2023                                                                                      #
 #####################################################################################################################
-# Napisany kod jest czêœci¹ pracy magisterskiej i zosta³ napisany na podstawie                                      #
+# Napisany kod jest czÄ™Å›ciÄ… pracy magisterskiej i zostaÅ‚ napisany na podstawie                                      #
 # opisu sieci zawartego w artykule "Hamiltonian Neural Network for solving equations of motion"                     #
-# dostêpnego pod linkiem                                                                                            #
+# dostÄ™pnego pod linkiem                                                                                            #
 # https://arxiv.org/abs/2001.11107                                                                                  #
-# (dostêp 19.02.2023)                                                                                               #
+# (dostÄ™p 19.02.2023)                                                                                               #
 # oraz na podstawie kodu pochodzacego z tegoz https://github.com/mariosmat/hamiltonianNNetODEs (dostep 19.02.2023)  #
 
 #####################################################################################################################
 
-# model klasycznej sieci neuronowej do rozwi¹zania prostego równanie ró¿niczkowego 
-# przyk³ad rozwi¹zanego rr pochodzi z artyku³u Hamiltonian NN for solving  equations of motion: 
+# model klasycznej sieci neuronowej do rozwiÄ…zania prostego rÃ³wnanie rÃ³Å¼niczkowego 
+# przykÅ‚ad rozwiÄ…zanego rr pochodzi z artykuÅ‚u Hamiltonian NN for solving  equations of motion: 
 # dx/dt =p , dp//dt = -(x+x^3).
 #model wytrenowany na podobnych parametrach, co w artykule, nie zastosowano natomiast 
 #hamiltonianu w modelu
@@ -212,7 +212,7 @@ out <- lsoda(xstart, times, oscylator, parms)
 
 
 # porownanie na wykresie
-plot(out[,1],out[,2], type = 'l',lwd=3,xlab = 't',ylab = 'x',main = "K¹t wychylenia w czasie")
+plot(out[,1],out[,2], type = 'l',lwd=3,xlab = 't',ylab = 'x',main = "KÄ…t wychylenia w czasie")
 lines(t,x, type = 'l',col='blue',lwd=3,lty=2)
 legend('topleft',legend = c('prawdziwe', 'SN'),col=c('black','blue'),lty=c(1,2),lwd=3)
 
