@@ -5,17 +5,17 @@
 #####--- opiekun: dr Magdalena Chmara                                                                   #
 #####--- luty 2023                                                                                      #
 #####################################################################################################################
-# Napisany kod jest czêœci¹ pracy magisterskiej i zosta³ napisany na podstawie                                      #
+# Napisany kod jest czÃªÅ“ciÂ¹ pracy magisterskiej i zostaÂ³ napisany na podstawie                                      #
 # opisu sieci zawartego w artykule "Hamiltonian Neural Network for solving equations of motion"                     #
-# dostêpnego pod linkiem                                                                                            #
+# dostÃªpnego pod linkiem                                                                                            #
 # https://arxiv.org/abs/2001.11107                                                                                  #
-# (dostêp 19.02.2023)                                                                                               #
+# (dostÃªp 19.02.2023)                                                                                               #
 # oraz na podstawie kodu pochodzacego z tegoz https://github.com/mariosmat/hamiltonianNNetODEs (dostep 19.02.2023)  #
 
 #####################################################################################################################
 # Rozwazac bedziemy hamiltonowska siec neuronowa, na koniec porownammy z 
 # klasyczna siecia rozwazana w pliku .r (wystarczy wczytac model "klasNNprz1.rt")
-# przyk³ad rozwi¹zanego rr pochodzi z artyku³u Hamiltonian NN for solving  equations of motion: 
+# przykÂ³ad rozwiÂ¹zanego rr pochodzi z artykuÂ³u Hamiltonian NN for solving  equations of motion: 
 # dx/dt =p , dp//dt = -(x+x^3).
 
 #install.packages("torch")
@@ -85,7 +85,7 @@ pertPunktow <- function(siatka, t0, tf, sigma =0.5){
   szum = delta_t*torch_rand_like(siatka)*sigma
   t = siatka + szum
   t[3]=torch_ones(1,1)*(-1)
-  t[t<t0]=t0 - t[t<t0] #zamiana punktów z ujemnych na dodatnie, bo t0=0
+  t[t<t0]=t0 - t[t<t0] #zamiana punktÃ³w z ujemnych na dodatnie, bo t0=0
   t[t>tf]=2*tf - t[t>tf]
   t$requires_grad = FALSE
   return(t)
@@ -188,7 +188,7 @@ run_odeNet <- function(X0,tf,neurons,epochs,n_train,lr){
     
   }
   #print(Loss_history[seq(1,epochs,10)])
-  plot(log(Loss_history),type = 'l',xlab='iteracja',ylab='b³¹d',main='Funkcja b³êdu w skali log')
+  plot(log(Loss_history),type = 'l',xlab='iteracja',ylab='bÂ³Â¹d',main='Funkcja bÂ³Ãªdu w skali log')
   return(NN)
 }
 
@@ -280,13 +280,13 @@ dpx_kl=px_p - px_kl[,1]
 
 # porownanie na wykresie
 par(mfrow=c(1,2))
-plot(t_p,x_p, type = 'l',lty=1,lwd=4,ylim=c(-1.5,3.2),xlab = 't',ylab = 'x',main = "Wykres k¹ta wychylenia w czasie")
+plot(t_p,x_p, type = 'l',lty=1,lwd=4,ylim=c(-1.5,3.2),xlab = 't',ylab = 'x',main = "Wykres kÂ¹ta wychylenia w czasie")
 lines(t,x, type = 'l',lty=2,lwd=4,col='red')
 lines(t,x_kl, type = 'l',lty=2,lwd=4,col='blue')
 legend('topleft',legend = c('numeryczne', 'HSN', 'SN'),col=c('black','red','blue'),lty=c(1,2,2),lwd=3)
 
 
-plot(t_p,px_p, type = 'l',lty=1,lwd=4,ylim=c(-2,5),xlab = 't',ylab = 'p',main = "Wykres pêdu od czasu")
+plot(t_p,px_p, type = 'l',lty=1,lwd=4,ylim=c(-2,5),xlab = 't',ylab = 'p',main = "Wykres pÃªdu od czasu")
 lines(t,px, type = 'l',lty=2,lwd=4,col='red')
 lines(t,px_kl, type = 'l',lty=2,lwd=4,col='blue')
 legend('topleft',legend = c('numeryczne', 'HSN', 'SN'),col=c('black','red','blue'),lty=c(1,2,2),lwd=3)
@@ -307,17 +307,17 @@ legend('bottomleft',legend = c('numeryczne', 'HSN', 'SN'),col=c('black','red','b
 ###################---- ANALIZA BLEDOW ----##################
 par(mfrow=c(1,1))
 
-plot(t_p,dx_p,type='l',lty=1,lwd=3,col='black',ylim=c(-0.1,0.1),xlab = 't',ylab = 'delta x',main = 'B³¹d w czasie')
+plot(t_p,dx_p,type='l',lty=1,lwd=3,col='black',ylim=c(-0.1,0.1),xlab = 't',ylab = 'delta x',main = 'BÂ³Â¹d w czasie')
 lines(t,dx,type='l',lty=1,lwd=2,col='red')
 lines(t,dx_kl,type='l',lty=1,lwd=2,col='blue')
 legend('topright',legend = c('numeryczne', 'HSN', 'SN'),col=c('black','red','blue'),lty=c(1,1,1),lwd=3)
 
-plot(t_p,dpx_p,type='l',lty=1,lwd=3,col='black',ylim=c(-0.1,0.1),xlab = 't',ylab = 'delta p',main = 'B³¹d w czasie')
+plot(t_p,dpx_p,type='l',lty=1,lwd=3,col='black',ylim=c(-0.1,0.1),xlab = 't',ylab = 'delta p',main = 'BÂ³Â¹d w czasie')
 lines(t,dpx,type='l',lty=1,lwd=2,col='red')
 lines(t,dpx_kl,type='l',lty=1,lwd=2,col='blue')
 legend('topright',legend = c('numeryczne', 'HSN', 'SN'),col=c('black','red','blue'),lty=c(1,1,1),lwd=3)
 
-plot(dx_p,dpx_p,type='l',lty=1,lwd=3,col='black',ylim=c(-0.1,0.1),xlim=c(-0.1,0.1),xlab = 'delta x',ylab = 'delta p',main = 'B³¹d')
+plot(dx_p,dpx_p,type='l',lty=1,lwd=3,col='black',ylim=c(-0.1,0.1),xlim=c(-0.1,0.1),xlab = 'delta x',ylab = 'delta p',main = 'BÂ³Â¹d')
 lines(dx,dpx,type='l',lty=1,lwd=3,col='red')
 lines(dx_kl,dpx_kl,type='l',lty=1,lwd=2,col='blue')
 legend('topleft',legend = c('numeryczne', 'HSN', 'SN'),col=c('black','red','blue'),lty=c(1,1,1),lwd=3)
