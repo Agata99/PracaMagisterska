@@ -1,5 +1,5 @@
 # PracaMagisterska
-Repozytorium zawiera kody programów napisane w ramach pracy magisterskiej pod tytułem "Hamiltonowskie sieci neuronowe".
+Repozytorium zawiera kody programów napisane w ramach pracy magisterskiej pod tytułem "Hamiltonowskie sieci neuronowe". Do implementacji sieci zastosowano język R, opierając się na bibliotece torch.
 
 ## Model I
 
@@ -9,3 +9,7 @@ Plik *model1_HNN_nielin_oscyl.R* zawiera implementację hamiltonowskiej sieci ne
 ## Model II
 
 Plik *model2_HNN_real_pendulum.R* zawiera implementacje hamiltonowskiej sieci neuronowej, która napędzana jest przez dane eksperymentalne. Niezbędne do działania modelu dane dołączone są pod nazwą *real_pend_h_1.txt*. Sieć ta daje w wyniku wektory pochodnych, determinujące ruch układu. Program zawiera wykresy porównujące działania modelu z danymi eksperymentalnymi.
+
+## Dodatek
+
+Pozostałe pliki zawierają programy, które powstały na potrzeby zapoznania się z biblioteką torch i działaniem sieci neuronowych. Znajdują się tu programy rozwiązujące proste równania różniczkowe (dwa przykłady) oraz przykłady, które nie weszły do pracy magisterskiej.
